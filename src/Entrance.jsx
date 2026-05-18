@@ -5,7 +5,7 @@ export default function Entrance() {
   // TODO: call signup when form is submitted
   const { signup } = useAuth();
 
-  const newPlayer = (formData) => {
+  const handleSignup = (formData) => {
     signup(formData.get("name"));
   };
 
@@ -22,7 +22,7 @@ export default function Entrance() {
         fixed on you. The one on the left opens its mouth, and with a deep,
         rumbling voice, it asks, "Who approaches? Speak your name."
       </p>
-      <form action={newPlayer}>
+      <form action={handleSignup}>
         <label>
           Name
           <input name="name" />
