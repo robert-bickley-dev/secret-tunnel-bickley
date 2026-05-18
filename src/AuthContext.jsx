@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
   }
 
   // TODO: authenticate
-  async function authenticate(token) {
+  async function authenticate() {
     if (!token) throw Error("Error: No token value in state");
     try {
       const response = await fetch(API + "/authenticate", {
