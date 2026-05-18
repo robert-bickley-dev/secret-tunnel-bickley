@@ -33,8 +33,29 @@ export function AuthProvider({ children }) {
   }
 
   // TODO: authenticate
+  async function authenticate(token) {
+    if (!token) throw Error("Error: No token value in state");
+    try {
+      const response = await fetch(API + "/authenticate", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const result = await response.json();
+      if (result.success === false) {
+        throw Error("Error:Invalid token");
+      } else {
+        setLocation("TUNNEL");
+      }
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  const value = { location, signup, token };
+  const value = { location, signup, token, authenticate };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
