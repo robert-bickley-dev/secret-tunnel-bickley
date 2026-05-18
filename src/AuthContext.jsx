@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
   const [location, setLocation] = useState("GATE");
 
   // TODO: signup
-  async function signup(username, password) {
+  const signup = async (username, password) => {
     try {
       const response = await fetch(API + "/signup", {
         method: "POST",
@@ -30,10 +30,10 @@ export function AuthProvider({ children }) {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   // TODO: authenticate
-  async function authenticate() {
+  const authenticate = async () => {
     if (!token) throw Error("Error: No token value in state");
     try {
       const response = await fetch(API + "/authenticate", {
@@ -53,9 +53,9 @@ export function AuthProvider({ children }) {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const value = { location, signup, token, authenticate };
+  const value = { location, signup, authenticate };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
