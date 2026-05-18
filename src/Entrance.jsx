@@ -2,8 +2,7 @@ import { useAuth } from "./AuthContext.jsx";
 
 /** Users can enter their name to receive a token from the API. */
 export default function Entrance() {
-  // TODO: call signup when form is submitted
-  const { signup } = useAuth();
+  const { signup, error } = useAuth();
 
   const handleSignup = (formData) => {
     signup(formData.get("name"));
@@ -29,6 +28,7 @@ export default function Entrance() {
         </label>
         <button>Respond</button>
       </form>
+      {error && <p role="alert">{error}</p>}
     </>
   );
 }

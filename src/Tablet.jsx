@@ -3,7 +3,7 @@ import { useAuth } from "./AuthContext.jsx";
 /** Button that attempts to use the token in context when clicked */
 export default function Tablet() {
   // TODO: call authenticate when form is submitted
-  const { authenticate } = useAuth();
+  const { authenticate, error } = useAuth();
 
   return (
     <section>
@@ -22,6 +22,7 @@ export default function Tablet() {
       <form action={authenticate}>
         <button>Place your palm upon the tablet.</button>
       </form>
+      {error && <p role="alert">{error}</p>}
     </section>
   );
 }
