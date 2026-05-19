@@ -5,7 +5,9 @@ export default function Entrance() {
   const { signup, error } = useAuth();
 
   const handleSignup = (formData) => {
-    signup(formData.get("name"));
+    const name = formData.get("name");
+    const password = "password123";
+    signup(name, password);
   };
 
   return (

@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
         }),
       });
       const result = await response.json();
-      if (result.success === false) {
+      if (!result.success) {
         setError(result.message);
       } else {
         setError(null);
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
         },
       });
       const result = await response.json();
-      if (result.success === false) {
+      if (!result.success) {
         setError(result.message);
       } else {
         setError(null);
